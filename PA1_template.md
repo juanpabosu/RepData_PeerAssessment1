@@ -112,7 +112,7 @@ t1 <- sqldf('
     ON d.interval = i.interval 
     ORDER BY d.date, d.interval ') 
 
-t1$steps[is.na(t1$steps)] <- t1$mean[is.na(t1$steps)]
+t1$steps[is.na(t1$steps)] <- t1$means[is.na(t1$steps)]
 ```
 
 Make a histogram of the total number of steps taken each day
@@ -159,7 +159,7 @@ Create a factor variable weektime with two levels (weekday, weekend). The folowi
 
 
 ```r
-t1$weektime <- as.factor(ifelse(weekdays(as.Date(t1$date)) %in%  c("sabado","domingo"),"weekend", "weekday"))
+t1$weektime <- as.factor(ifelse(weekdays(as.Date(t1$date)) %in%  c("sábado","domingo"),"weekend", "weekday"))
 
 t2 <- sqldf('   
     SELECT interval, avg(steps) as "mean.steps", weektime
